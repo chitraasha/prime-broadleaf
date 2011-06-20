@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/1360/examples/trunk/prime-moviecollector/src/main/java/org/primefaces/examples/moviecollector/view
+END
+CreateMovie.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/!svn/ver/1360/examples/trunk/prime-moviecollector/src/main/java/org/primefaces/examples/moviecollector/view/CreateMovie.java
+END
+ViewMovie.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/!svn/ver/905/examples/trunk/prime-moviecollector/src/main/java/org/primefaces/examples/moviecollector/view/ViewMovie.java
+END
+ManageMovies.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/!svn/ver/908/examples/trunk/prime-moviecollector/src/main/java/org/primefaces/examples/moviecollector/view/ManageMovies.java
+END

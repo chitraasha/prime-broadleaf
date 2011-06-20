@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/908/examples/trunk/prime-moviecollector/src/main/java/org/primefaces/examples/moviecollector/dao
+END
+GenericDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/!svn/ver/905/examples/trunk/prime-moviecollector/src/main/java/org/primefaces/examples/moviecollector/dao/GenericDAO.java
+END
+MovieDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/!svn/ver/905/examples/trunk/prime-moviecollector/src/main/java/org/primefaces/examples/moviecollector/dao/MovieDAO.java
+END
+GenericDAOWithJPA.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/!svn/ver/905/examples/trunk/prime-moviecollector/src/main/java/org/primefaces/examples/moviecollector/dao/GenericDAOWithJPA.java
+END
+MovieDAOWithJPA.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/!svn/ver/908/examples/trunk/prime-moviecollector/src/main/java/org/primefaces/examples/moviecollector/dao/MovieDAOWithJPA.java
+END

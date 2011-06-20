@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/3138/examples/trunk/prime-moviecollector/src/main/resources
+END
+applicationContext.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/3138/examples/trunk/prime-moviecollector/src/main/resources/applicationContext.xml
+END
+mesajlar.properties
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/905/examples/trunk/prime-moviecollector/src/main/resources/mesajlar.properties
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/905/examples/trunk/prime-moviecollector/src/main/resources/log4j.properties
+END
+users.properties
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/3138/examples/trunk/prime-moviecollector/src/main/resources/users.properties
+END
+application.properties
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/905/examples/trunk/prime-moviecollector/src/main/resources/application.properties
+END

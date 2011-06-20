@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui" template="/template.xhtml">
+
+	<ui:define name="head">
+		<style type="text/css">
+.label {
+	width: 20%;
+	padding: 2px;
+}
+
+.value {
+	width: 40%;
+	padding: 2px;
+}
+
+.validation {
+	width: 40%;
+	padding: 2px;
+}
+
+.grid {
+	width: 100%;
+}
+</style>
+	</ui:define>
+
+	<ui:define name="content">
+		<p:log />
+		<p:messages id="msgs" showDetail="true" />
+		<p:growl id="growl" showDetail="true" life="3000" />
+		<h:form id="loginForm" prependId="false">
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel for="j_username" value="Username: *" />
+				<p:inputText value="#{j_username}" id="j_username" required="true"
+					label="j_username" />
+
+				<h:outputLabel for="j_password" value="Password: * " />
+				<p:password value="#{j_password}" id="j_password" required="true"
+					label="j_password" feedback="false" />
+
+				<f:facet name="footer">
+					<p:commandButton value="Login" update="msgs"
+						actionListener="#{loginBean.doLogin}" />
+				</f:facet>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,124 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="template.xhtml">
+	
+	<ui:define name="head">
+		<style type="text/css">
+			.yui-dt {
+				margin-top:10px;
+			}
+			
+			.yui-dt table {
+				width:100%;
+			}
+			
+			.yui-ac {
+				width:200px;
+				padding-bottom:1em; 
+			}
+			
+			.label {
+				width:20%;
+				padding:4px;
+			}
+
+			.value {
+				width:80%;
+				padding:4px;
+			}
+			
+			.grid {
+				width:100%;
+			}
+		</style>
+	</ui:define>
+
+	<ui:define name="content">
+	
+		<h:form prependId="false">
+			<p:panel header="Search Adds">
+				<h:panelGrid columns="3">
+					<h:outputText value="Add " />
+					<p:autoComplete value="#{manageAdds.headLine}" completeMethod="#{manageAdds.getAddsByHeadline}"/>
+					<p:commandButton value="Search" actionListener="#{manageAdds.search}" async="true" update="adds"/>
+				</h:panelGrid>
+			</p:panel>
+			
+		
+			<p:dataTable id="adds" var="add" value="#{manageAdds.adds}" rows="5" paginator="true" >
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Headline" />
+					</f:facet>
+					<h:outputText value="#{add.headLine}"></h:outputText>
+				</p:column>
+				
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Category" />
+					</f:facet>
+					<h:outputText value="#{add.category}"></h:outputText>
+				</p:column>
+				
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Name" />
+					</f:facet>
+					<h:outputText value="#{add.name}"></h:outputText>
+				</p:column>
+				
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="E-mail" />
+					</f:facet>
+					<h:outputText value="#{add.email}"></h:outputText>
+				</p:column>
+				
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Options" />
+					</f:facet>
+					<p:commandLink value="View" async="true" update="detailsTable" oncomplete="detailsDialog.show();">
+						<h:graphicImage value="img/search.png" style="border:0;"/>
+						<f:setPropertyActionListener value="#{add}" target="#{manageAdds.add}" />
+					</p:commandLink>
+				</p:column>
+				
+			</p:dataTable>
+			
+			Export Data
+			
+			<br />
+			
+			<h:commandLink>
+				<h:graphicImage value="img/excel.png" style="border:0"/>
+				<p:dataExporter type="xls" target="adds" fileName="adds" excludeColumns="3"/>
+			</h:commandLink>
+			
+			<h:commandLink>
+				<h:graphicImage value="img/pdf.png" style="border:0"/>
+				<p:dataExporter type="pdf" target="adds" fileName="adds" excludeColumns="3"/>
+			</h:commandLink>
+		</h:form>
+		
+		<p:dialog header="Add Details" widgetVar="detailsDialog" fixedCenter="true">
+			<h:panelGrid id="detailsTable" columns="2" width="300px" >
+				<h:outputText value="Headline" />
+				<h:outputText value="#{manageAdds.add.headLine}" />
+				
+				<h:outputText value="Category" />
+				<h:outputText value="#{manageAdds.add.category}" />
+				
+				<h:outputText value="Name" />
+				<h:outputText value="#{manageAdds.add.name}" />
+				
+				<h:outputText value="E-mail" />
+				<h:outputText value="#{manageAdds.add.email}" />
+			</h:panelGrid>
+		</p:dialog>
+	</ui:define>
+
+</ui:composition>

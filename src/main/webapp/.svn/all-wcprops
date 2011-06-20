@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/3584/examples/trunk/prime-moviecollector/src/main/webapp
+END
+index.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/909/examples/trunk/prime-moviecollector/src/main/webapp/index.jsp
+END
+viewMovie.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/905/examples/trunk/prime-moviecollector/src/main/webapp/viewMovie.xhtml
+END
+template.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/3584/examples/trunk/prime-moviecollector/src/main/webapp/template.xhtml
+END
+manageMovies.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/1360/examples/trunk/prime-moviecollector/src/main/webapp/manageMovies.xhtml
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/905/examples/trunk/prime-moviecollector/src/main/webapp/index.html
+END
+source.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/908/examples/trunk/prime-moviecollector/src/main/webapp/source.xhtml
+END
+createMovie.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/1360/examples/trunk/prime-moviecollector/src/main/webapp/createMovie.xhtml
+END
