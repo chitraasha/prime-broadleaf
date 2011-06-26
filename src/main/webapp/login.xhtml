@@ -38,11 +38,11 @@
 					label="j_username" />
 
 				<h:outputLabel for="j_password" value="Password: * " />
-				<p:password value="#{j_password}" id="j_password" required="true"
+				<p:inputText type="password" value="#{j_password}" id="j_password" required="true"
 					label="j_password" feedback="false" />
 
 				<f:facet name="footer">
-					<p:commandButton value="Login" update="msgs"
+					<p:commandButton value="Login" update="msgs" ajax="false"
 						actionListener="#{loginBean.doLogin}" />
 				</f:facet>
 			</h:panelGrid>
