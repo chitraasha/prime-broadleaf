@@ -28,7 +28,6 @@
 	</ui:define>
 
 	<ui:define name="content">
-		<p:log />
 		<p:messages id="msgs" showDetail="true" />
 		<p:growl id="growl" showDetail="true" life="3000" />
 		<h:form id="loginForm" prependId="false">
@@ -38,12 +37,12 @@
 					label="j_username" />
 
 				<h:outputLabel for="j_password" value="Password: * " />
-				<p:inputText type="password" value="#{j_password}" id="j_password" required="true"
-					label="j_password" feedback="false" />
+				<p:inputText  value="#{j_password}" id="j_password" required="true"
+					label="j_password" feedback="false" type="password"/>
 
 				<f:facet name="footer">
-					<p:commandButton value="Login" update="msgs" ajax="false"
-						actionListener="#{loginBean.doLogin}" />
+					<p:commandButton value="Login" update="growl"
+						actionListener="#{loginBean.doLogin}" ajax="false"/>
 				</f:facet>
 			</h:panelGrid>
 		</h:form>

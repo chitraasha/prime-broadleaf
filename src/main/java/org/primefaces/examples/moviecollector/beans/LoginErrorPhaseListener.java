@@ -25,7 +25,6 @@ public class LoginErrorPhaseListener implements PhaseListener
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(
             		WebAttributes.AUTHENTICATION_EXCEPTION, null);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Sample error message", "Username or password not valid."));
-
         }
     }
  

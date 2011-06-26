@@ -54,9 +54,7 @@
 	</bean>
 	
 	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
-	
 	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
-
 	<bean id="loggerListener" class="org.springframework.security.authentication.event.LoggerListener" />
 
 </beans>
