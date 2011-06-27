@@ -1,6 +1,8 @@
 package org.primefaces.examples.moviecollector.beans;
 
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -9,7 +11,7 @@ import org.primefaces.model.TreeNode;
 
 @ManagedBean
 @ViewScoped
-public class TreeBean {
+public class TreeBean implements Serializable {
 	
 	private TreeNode root;
 
