@@ -7,15 +7,15 @@ import org.primefaces.examples.moviecollector.domain.Movie;
 
 public interface AddService {
 
-	public void createNew(Add Add);
+	public void createNew(Add add);
 	
 	public List<Add> findAll();
 	
 	public List<Add> findByHeadline(String title);
 	
-	public void update(Add Add);
+	public void update(Add add);
 	
-	public void remove(Add Add);
+	public void remove(Add add);
 	
 	public Add findById(Long id);
 }

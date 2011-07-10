@@ -1,0 +1,62 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui" template="/template.xhtml">
+
+	<ui:define name="head">
+		<style type="text/css">
+.label {
+	width: 20%;
+	padding: 2px;
+}
+
+.value {
+	width: 40%;
+	padding: 2px;
+}
+
+.validation {
+	width: 40%;
+	padding: 2px;
+}
+
+.grid {
+	width: 100%;
+}
+</style>
+	</ui:define>
+
+
+	<ui:define name="content">
+		<h:form prependId="false">
+			<p:panel id="panel" header="New Category">
+				<p:growl showDetail="true" />
+				<h:panelGrid columns="3" columnClasses="label,value,validation"
+					styleClass="grid">
+					<h:outputLabel for="name" value="Name" />
+					<p:inputText id="name" value="#{createCategory.category.name}"
+						required="true" requiredMessage="Name is required"
+						validatorMessage="Max length is 25">
+						<f:validateLength maximum="25" />
+					</p:inputText>
+					<p:message for="name" />
+
+
+					<h:outputText />
+					<h:panelGroup>
+						<h:panelGrid columns="2">
+							<p:commandButton value="Reset" type="reset" />
+							<p:commandButton value="Save" actionListener="#{createCategory.save}"
+								async="true" update="panel">
+								<p:confirmDialog yesLabel="Just save it" noLabel="Hmm, nope"
+									message="Seriously dude, are you sure?" header="Confirm :)"
+									severity="warn" fixedCenter="true" draggable="false" />
+							</p:commandButton>
+						</h:panelGrid>
+					</h:panelGroup>
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

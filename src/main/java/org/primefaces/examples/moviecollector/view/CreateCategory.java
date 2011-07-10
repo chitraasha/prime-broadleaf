@@ -1,0 +1,63 @@
+package org.primefaces.examples.moviecollector.view;
+
+import java.io.Serializable;
+import java.util.Iterator;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
+import org.primefaces.examples.moviecollector.domain.Category;
+import org.primefaces.examples.moviecollector.service.CategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component("createCategory")
+@Scope("request")
+public class CreateCategory implements Serializable {
+
+	private Category category = new Category();
+
+	private CategoryService categoryService;
+
+	public CreateCategory() {
+	}
+
+	@Autowired
+	public CreateCategory(CategoryService categoryService) {
+		this.categoryService = categoryService;
+	}
+
+	public void save(ActionEvent actionEvent) {
+			categoryService.createNew(category);
+			FacesMessage facesMessage = new FacesMessage(
+					FacesMessage.SEVERITY_INFO, "Info", "Category is saved");
+			FacesContext.getCurrentInstance().addMessage(null, facesMessage);
+			category = new Category();
+	}
+
+	private UIComponent findComponent(UIComponent parent, String id) {
+		if (id.equals(parent.getId())) {
+			return parent;
+		}
+		Iterator<UIComponent> kids = parent.getFacetsAndChildren();
+		while (kids.hasNext()) {
+			UIComponent kid = kids.next();
+			UIComponent found = findComponent(kid, id);
+			if (found != null) {
+				return found;
+			}
+		}
+		return null;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+}

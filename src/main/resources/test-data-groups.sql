@@ -22,6 +22,9 @@ values ('admin','admin',true);
 insert into users(username, password, enabled) 
 values ('guest','guest',true);
 
+insert into users(username, password, enabled) 
+values ('dalla','dalla',true);
+
 --Finally, assign users to groups:
 insert into group_members(group_id, username) 
 select id,'guest' from groups 
@@ -29,4 +32,8 @@ where group_name='Users';
 
 insert into group_members(group_id, username) 
 select id,'admin' from groups 
+where group_name='Administrators';
+
+insert into group_members(group_id, username) 
+select id,'dalla' from groups 
 where group_name='Administrators';
