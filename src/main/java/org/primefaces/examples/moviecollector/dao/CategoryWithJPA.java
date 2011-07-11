@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.primefaces.examples.moviecollector.domain.Add;
 import org.primefaces.examples.moviecollector.domain.Category;
 import org.springframework.stereotype.Repository;
 
