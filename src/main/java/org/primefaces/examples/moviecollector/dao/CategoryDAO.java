@@ -2,6 +2,7 @@ package org.primefaces.examples.moviecollector.dao;
 
 import java.util.List;
 
+import org.primefaces.examples.moviecollector.domain.Add;
 import org.primefaces.examples.moviecollector.domain.Category;
 
 public interface CategoryDAO {
