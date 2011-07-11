@@ -48,16 +48,14 @@ public class CategoryServiceImpl implements CategoryService{
 		return categoryDAO.loadById(id);
 	}
 
-	@Override
-	public List<Category> findAllParents() {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional(readOnly=true)
+	public List<Category> findRootNodes() {
+		return categoryDAO.findRootNodes();
 	}
 
-	@Override
+	@Transactional(readOnly=true)
 	public List<Category> findChildren(Category category) {
-		// TODO Auto-generated method stub
-		return null;
+		return categoryDAO.findAllChildren(category);
 	}
 
 

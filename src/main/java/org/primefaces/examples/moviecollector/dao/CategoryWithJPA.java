@@ -51,4 +51,18 @@ public class CategoryWithJPA implements CategoryDAO {
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
+
+	@Override
+	public List<Category> findRootNodes() {
+		Query query = entityManager.createQuery("Select c from Category c where c.parent is null");
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Category> findAllChildren(Category category) {
+		Query query = entityManager.createQuery("Select c from Category c where c.parent = :category");
+		query.setParameter("category", category);
+
+		return query.getResultList();
+	}
 }

@@ -45,7 +45,7 @@
 					<h:outputLabel for="category" value="Category" />
 					<p:tree value="#{categoryBean.root}" var="node" dynamic="true"
 						id="category" selectionMode="single"
-						selection="#{createCategory.category.parent}">
+						selection="#{createCategory.selectedNode}">
 						<p:treeNode>
 							<h:outputText value="#{node.name}" />
 						</p:treeNode>

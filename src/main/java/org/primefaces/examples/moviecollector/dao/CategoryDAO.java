@@ -17,4 +17,8 @@ public interface CategoryDAO {
 	List<Category> loadAll();
 	
 	public List<Category> findByName(String name);
+	
+	public List<Category> findRootNodes();
+	
+	public List<Category> findAllChildren(Category category);
 }

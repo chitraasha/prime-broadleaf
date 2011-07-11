@@ -11,7 +11,7 @@ public interface CategoryService {
 	
 	public List<Category> findAll();
 	
-	public List<Category> findAllParents();
+	public List<Category> findRootNodes();
 	
 	public List<Category> findChildren(Category category);
 	

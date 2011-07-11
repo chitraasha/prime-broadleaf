@@ -10,6 +10,7 @@ import javax.faces.event.ActionEvent;
 
 import org.primefaces.examples.moviecollector.domain.Category;
 import org.primefaces.examples.moviecollector.service.CategoryService;
+import org.primefaces.model.DefaultTreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -19,7 +20,11 @@ import org.springframework.stereotype.Component;
 public class CreateCategory implements Serializable {
 
 	private Category category = new Category();
+	
+	private String test;
 
+	private DefaultTreeNode selectedNode;
+	
 	private CategoryService categoryService;
 
 	public CreateCategory() {
@@ -31,6 +36,7 @@ public class CreateCategory implements Serializable {
 	}
 
 	public void save(ActionEvent actionEvent) {
+			category.setParent((Category) selectedNode.getData());
 			categoryService.createNew(category);
 			FacesMessage facesMessage = new FacesMessage(
 					FacesMessage.SEVERITY_INFO, "Info", "Category is saved");
@@ -60,4 +66,21 @@ public class CreateCategory implements Serializable {
 	public Category getCategory() {
 		return category;
 	}
+
+	public void setTest(String test) {
+		this.test = test;
+	}
+
+	public String getTest() {
+		return test;
+	}
+
+	public void setSelectedNode(DefaultTreeNode selectedNode) {
+		this.selectedNode = selectedNode;
+	}
+
+	public DefaultTreeNode getSelectedNode() {
+		return selectedNode;
+	}
+
 }
