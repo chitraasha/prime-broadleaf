@@ -244,7 +244,7 @@
 		<repository>
 			<id>repository.jboss.org</id>
 			<name>JBoss Repository for Maven</name>
-			<url>http://repository.jboss.org/nexus</url>
+			<url>https://repository.jboss.org/nexus</url>
 		</repository>
 		<repository>
 			<id>com.springsource.repository.bundles.milestone</id>
