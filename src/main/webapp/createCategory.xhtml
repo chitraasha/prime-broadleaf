@@ -42,6 +42,15 @@
 					</p:inputText>
 					<p:message for="name" />
 
+					<h:outputLabel for="category" value="Category" />
+					<p:tree value="#{categoryBean.root}" var="node" dynamic="true"
+						id="category" selectionMode="single"
+						selection="#{createCategory.category.parent}">
+						<p:treeNode>
+							<h:outputText value="#{node.name}" />
+						</p:treeNode>
+					</p:tree>
+					<p:message for="category" />
 
 					<h:outputText />
 					<h:panelGroup>

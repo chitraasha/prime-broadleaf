@@ -25,9 +25,9 @@ public class Category implements Serializable {
 	private String name;
 
     // private constructor
-	private Category(Category parent, String name) { 
-	    this.parent = parent; 
-	    this.name = name;
+	public Category(String name, Category parent) { 
+		this.name = name;
+		this.parent = parent; 
 	}
 
 	public Category() {
