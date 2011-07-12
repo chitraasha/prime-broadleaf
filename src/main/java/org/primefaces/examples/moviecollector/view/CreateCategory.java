@@ -5,9 +5,12 @@ import java.util.Iterator;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
+import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import org.hamcrest.core.Is;
+import org.primefaces.examples.moviecollector.beans.CategoryBean;
 import org.primefaces.examples.moviecollector.domain.Category;
 import org.primefaces.examples.moviecollector.service.CategoryService;
 import org.primefaces.model.DefaultTreeNode;
@@ -36,14 +39,29 @@ public class CreateCategory implements Serializable {
 	}
 
 	public void save(ActionEvent actionEvent) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		CategoryBean bean = (CategoryBean) context.getApplication().evaluateExpressionGet(context, "#{categoryBean}", CategoryBean.class);
+		
+		if (selectedNode != null) {
 			category.setParent((Category) selectedNode.getData());
-			categoryService.createNew(category);
-			FacesMessage facesMessage = new FacesMessage(
-					FacesMessage.SEVERITY_INFO, "Info", "Category is saved");
-			FacesContext.getCurrentInstance().addMessage(null, facesMessage);
-			category = new Category();
+			new DefaultTreeNode(category, selectedNode);
+			selectedNode.setExpanded(true);
+		}
+		else {
+			new DefaultTreeNode(category, bean.getRoot());	
+		}
+		
+		
+		
+		categoryService.createNew(category);
+		FacesMessage facesMessage = new FacesMessage(
+				FacesMessage.SEVERITY_INFO, "Info", "Category is saved");
+		FacesContext.getCurrentInstance().addMessage(null, facesMessage);
+		category = new Category();
 	}
 
+
+	
 	private UIComponent findComponent(UIComponent parent, String id) {
 		if (id.equals(parent.getId())) {
 			return parent;

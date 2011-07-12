@@ -57,7 +57,7 @@
 						<h:panelGrid columns="2">
 							<p:commandButton value="Reset" type="reset" />
 							<p:commandButton value="Save" actionListener="#{createCategory.save}"
-								async="true" update="panel">
+								async="true" update="panel,category">
 								<p:confirmDialog yesLabel="Just save it" noLabel="Hmm, nope"
 									message="Seriously dude, are you sure?" header="Confirm :)"
 									severity="warn" fixedCenter="true" draggable="false" />

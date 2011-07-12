@@ -17,9 +17,6 @@ public class Category implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@OneToMany
-	private List<Category> children = new ArrayList<Category>();
-	
 	private Category parent;
 	
 	private String name;
@@ -39,14 +36,6 @@ public class Category implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public List<Category> getChildren() {
-		return children;
-	}
-
-	public void setChildren(List<Category> children) {
-		this.children = children;
 	}
 
 	public Category getParent() {
