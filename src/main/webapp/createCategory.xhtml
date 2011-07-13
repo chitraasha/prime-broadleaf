@@ -43,7 +43,7 @@
 					<p:message for="name" />
 
 					<h:outputLabel for="category" value="Category" />
-					<p:tree value="#{categoryBean.root}" var="node" dynamic="true"
+					<p:tree value="#{categoryBean.root}" var="node" dynamic="false"
 						id="category" selectionMode="single"
 						selection="#{createCategory.selectedNode}">
 						<p:treeNode>

@@ -44,8 +44,9 @@ public class CreateCategory implements Serializable {
 		
 		if (selectedNode != null) {
 			category.setParent((Category) selectedNode.getData());
-			new DefaultTreeNode(category, selectedNode);
+			new DefaultTreeNode(category, selectedNode).setSelected(false);
 			selectedNode.setExpanded(true);
+			selectedNode.setSelected(false);
 		}
 		else {
 			new DefaultTreeNode(category, bean.getRoot());	
