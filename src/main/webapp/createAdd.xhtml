@@ -53,11 +53,11 @@
 					<p:message for="email" />
 
 					<h:outputLabel for="category" value="Category" />
-					<p:tree value="#{treeBean.root}" var="node" dynamic="true"
-						id="category" selectionMode="single"
+					<p:tree value="#{categoryBean.root}" var="node" dynamic="false" 
+					expanded="false" id="category" selectionMode="single"
 						selection="#{createAdd.add.category}">
 						<p:treeNode>
-							<h:outputText value="#{node}" />
+							<h:outputText value="#{node.name}" />
 						</p:treeNode>
 					</p:tree>
 					<p:message for="category" />
