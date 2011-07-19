@@ -20,12 +20,13 @@
 		<logout logout-url="/logout" logout-success-url="/" />
 	</http>
 
-	<jdbc:embedded-database id="dataSource" type="HSQL">
+	<!-- Not needed with MySQL
+	<jdbc:initialize-database data-source="dataSource">
 		<jdbc:script location="classpath:schema.sql" />
 		<jdbc:script location="classpath:test-data-groups.sql" />
-	</jdbc:embedded-database>
-	
-	
+	</jdbc:initialize-database>
+ 	-->
+		
 	<beans:bean id="jdbcUserService" class="org.springframework.security.provisioning.JdbcUserDetailsManager">
 		<beans:property name="dataSource" ref="dataSource"/>
 		<beans:property name="authenticationManager" ref="authenticationManager"/>

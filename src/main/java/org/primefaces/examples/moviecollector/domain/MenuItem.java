@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Add implements Serializable {
+public class MenuItem implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,7 +28,7 @@ public class Add implements Serializable {
 	private int	price;
 	
 
-	public Add() {
+	public MenuItem() {
 	}
 
 	public Long getId() {

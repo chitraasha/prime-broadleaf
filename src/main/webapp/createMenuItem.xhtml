@@ -30,12 +30,12 @@
 
 	<ui:define name="content">
 		<h:form prependId="false">
-			<p:panel id="panel" header="New Add">
+			<p:panel id="panel" header="New menu item">
 				<p:growl showDetail="true" />
 				<h:panelGrid columns="3" columnClasses="label,value,validation"
 					styleClass="grid">
 					<h:outputLabel for="name" value="Name" />
-					<p:inputText id="name" value="#{createAdd.add.name}"
+					<p:inputText id="name" value="#{createMenuItem.menuItem.name}"
 						required="true" requiredMessage="Name is required"
 						validatorMessage="Max length is 25">
 						<f:validateLength maximum="25" />
@@ -43,7 +43,7 @@
 					<p:message for="name" />
 
 					<h:outputLabel for="email" value="E-mail" />
-					<p:inputText id="email" value="#{createAdd.add.email}"
+					<p:inputText id="email" value="#{createMenuItem.menuItem.email}"
 						required="true" requiredMessage="E-mail is required"
 						converterMessage="Only numbers dude"
 						validatorMessage="Input must be a a valid email address">
@@ -55,7 +55,7 @@
 					<h:outputLabel for="category" value="Category" />
 					<p:tree value="#{treeBean.root}" var="node" dynamic="true"
 						id="category" selectionMode="single"
-						selection="#{createAdd.add.category}">
+						selection="#{createMenuItem.menuItem.category}">
 						<p:treeNode>
 							<h:outputText value="#{node}" />
 						</p:treeNode>
@@ -63,7 +63,7 @@
 					<p:message for="category" />
 
 					<h:outputLabel for="headLine" value="Headline" />
-					<p:inputText id="headLine" value="#{createAdd.add.headLine}"
+					<p:inputText id="headLine" value="#{createMenuItem.menuItem.headLine}"
 						validatorMessage="Max length is 25" required="true"
 						requiredMessage="Headline is required">
 						<f:validateLength maximum="25" />
@@ -72,7 +72,7 @@
 
 					<h:outputLabel for="description" value="Description" />
 					<p:inputTextarea id="description"
-						value="#{createAdd.add.description}" cols="50" rows="5"
+						value="#{createMenuItem.menuItem.description}" cols="50" rows="5"
 						validatorMessage="Max length is 25" required="true"
 						requiredMessage="Description is required">
 						<f:validateLength maximum="25" />
@@ -80,7 +80,7 @@
 					<p:message for="description" />
 
 					<h:outputLabel for="price" value="Price" />
-					<p:inputText id="price" value="#{createAdd.add.price}"
+					<p:inputText id="price" value="#{createMenuItem.menuItem.price}"
 						required="true" requiredMessage="Price is required"
 						converterMessage="Price must be a number"
 						validatorMessage="Cannot be 0">
@@ -97,7 +97,7 @@
 					<h:panelGroup>
 						<h:panelGrid columns="2">
 							<p:commandButton value="Reset" type="reset" />
-							<p:commandButton value="Save" actionListener="#{createAdd.save}"
+							<p:commandButton value="Save" actionListener="#{createMenuItem.save}"
 								async="true" update="panel">
 								<p:confirmDialog yesLabel="Just save it" noLabel="Hmm, nope"
 									message="Seriously dude, are you sure?" header="Confirm :)"

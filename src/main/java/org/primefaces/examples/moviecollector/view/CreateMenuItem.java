@@ -8,32 +8,32 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-import org.primefaces.examples.moviecollector.domain.Add;
+import org.primefaces.examples.moviecollector.domain.MenuItem;
 import org.primefaces.examples.moviecollector.domain.Movie;
-import org.primefaces.examples.moviecollector.service.AddService;
+import org.primefaces.examples.moviecollector.service.MenuItemService;
 import org.primefaces.examples.moviecollector.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-@Component("createAdd")
+@Component("createMenuItem")
 @Scope("request")
-public class CreateAdd implements Serializable {
+public class CreateMenuItem implements Serializable {
 
-	private Add add = new Add();
+	private MenuItem menuItem = new MenuItem();
 
-	private AddService addService;
+	private MenuItemService addService;
 
-	public CreateAdd() {
+	public CreateMenuItem() {
 	}
 
 	@Autowired
-	public CreateAdd(AddService addService) {
+	public CreateMenuItem(MenuItemService addService) {
 		this.addService = addService;
 	}
 
 	public void save(ActionEvent actionEvent) {
-		if (add.getCategory().isEmpty()) {
+		if (menuItem.getCategory().isEmpty()) {
 			FacesMessage facesMsg = new FacesMessage(
 					FacesMessage.SEVERITY_ERROR, "No category selected",
 					"No category selected");
@@ -44,11 +44,11 @@ public class CreateAdd implements Serializable {
 
 		} else {
 
-			addService.createNew(add);
+			addService.createNew(menuItem);
 			FacesMessage facesMessage = new FacesMessage(
-					FacesMessage.SEVERITY_INFO, "Info", "Add is saved");
+					FacesMessage.SEVERITY_INFO, "Info", "MenuItem is saved");
 			FacesContext.getCurrentInstance().addMessage(null, facesMessage);
-			add = new Add();
+			menuItem = new MenuItem();
 		}
 	}
 
@@ -67,11 +67,11 @@ public class CreateAdd implements Serializable {
 		return null;
 	}
 
-	public void setAdd(Add add) {
-		this.add = add;
+	public void setMenuItem(MenuItem menuItem) {
+		this.menuItem = menuItem;
 	}
 
-	public Add getAdd() {
-		return add;
+	public MenuItem getMenuItem() {
+		return menuItem;
 	}
 }

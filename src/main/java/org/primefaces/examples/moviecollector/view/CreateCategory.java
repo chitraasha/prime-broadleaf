@@ -14,6 +14,7 @@ import org.primefaces.examples.moviecollector.beans.CategoryBean;
 import org.primefaces.examples.moviecollector.domain.Category;
 import org.primefaces.examples.moviecollector.service.CategoryService;
 import org.primefaces.model.DefaultTreeNode;
+import org.primefaces.model.TreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -44,8 +45,9 @@ public class CreateCategory implements Serializable {
 		
 		if (selectedNode != null) {
 			category.setParent((Category) selectedNode.getData());
-			new DefaultTreeNode(category, selectedNode);
-			selectedNode.setExpanded(true);
+			TreeNode node = new DefaultTreeNode(category, selectedNode);
+			node.setExpanded(true);
+			
 		}
 		else {
 			new DefaultTreeNode(category, bean.getRoot());	
