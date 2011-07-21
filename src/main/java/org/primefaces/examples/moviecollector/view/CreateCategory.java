@@ -2,6 +2,7 @@ package org.primefaces.examples.moviecollector.view;
 
 import java.io.Serializable;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -10,6 +11,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 import org.hamcrest.core.Is;
+import org.primefaces.event.NodeExpandEvent;
 import org.primefaces.examples.moviecollector.beans.CategoryBean;
 import org.primefaces.examples.moviecollector.domain.Category;
 import org.primefaces.examples.moviecollector.service.CategoryService;
@@ -62,8 +64,17 @@ public class CreateCategory implements Serializable {
 		category = new Category();
 	}
 
+	public void remove(ActionEvent actionEvent) {
+		if (selectedNode != null) {
+			
+		}
+		else {
+			FacesMessage facesMessage = new FacesMessage(
+					FacesMessage.SEVERITY_ERROR, "Error", "Must select a category to remove!");
+			FacesContext.getCurrentInstance().addMessage(null, facesMessage);
+		}
+	}
 
-	
 	private UIComponent findComponent(UIComponent parent, String id) {
 		if (id.equals(parent.getId())) {
 			return parent;

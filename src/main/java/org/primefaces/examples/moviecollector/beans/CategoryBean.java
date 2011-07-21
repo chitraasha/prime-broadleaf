@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 
+import org.primefaces.event.NodeExpandEvent;
 import org.primefaces.examples.moviecollector.domain.Category;
 import org.primefaces.examples.moviecollector.service.CategoryService;
 import org.primefaces.model.DefaultTreeNode;
@@ -32,8 +33,14 @@ public class CategoryBean implements Serializable {
 		List<Category> categories = categoryService.findRootNodes();
 
 		for (Category category : categories) {
-			new DefaultTreeNode(category, root);
+			TreeNode newNode = new DefaultTreeNode(category, root);
+			List<Category> children = categoryService.findChildren(category);
+			
+			for (Category child : children) {
+				new DefaultTreeNode(child,newNode);
+			}
 		}
+		root.setExpanded(false);
 		
 	}
 
@@ -53,21 +60,21 @@ public class CategoryBean implements Serializable {
 		return root;
 	}
 
-	public void addNewRootNode(ActionEvent actionEvent) {
+	
+	public void onNodeExpand(NodeExpandEvent event) {
 		
+		List<TreeNode> nodes = event.getTreeNode().getChildren();
+		
+		for (TreeNode treeNode : nodes) {
+			Category category = (Category) treeNode.getData();
+			List<Category> children = categoryService.findChildren(category);
+			
+			for (Category child : children) {
+				new DefaultTreeNode(child,treeNode);
+			}
+		}
 	}
 	
-	public void addChildNode(ActionEvent actionEvent) {
-		System.out.println("Selected Node: " + getSelectedNode().toString());
-		TreeNode newNode = new DefaultTreeNode("Node New", getSelectedNode());
-		getSelectedNode().setExpanded(true);
-	}
-
-	public void addTopicBelow(ActionEvent actionEvent) {
-		TreeNode newNode = new DefaultTreeNode("Node New", getSelectedNode()
-				.getParent());
-	}
-
 	public void deleteNode(ActionEvent actionEvent) {
 		System.out.println("Node to be deleted: "
 				+ getSelectedNode().toString());

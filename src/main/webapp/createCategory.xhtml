@@ -45,19 +45,23 @@
 					<h:outputLabel for="category" value="Category" />
 					<p:tree value="#{categoryBean.root}" var="node" dynamic="false"
 						id="category" selectionMode="single"
-						selection="#{createCategory.selectedNode}">
+						selection="#{createCategory.selectedNode}"
+						nodeExpandListener="#{categoryBean.onNodeExpand}">
+											
 						<p:treeNode>
 							<h:outputText value="#{node.name}" />
 						</p:treeNode>
+							
 					</p:tree>
 					<p:message for="category" />
 
 					<h:outputText />
 					<h:panelGroup>
 						<h:panelGrid columns="2">
-							<p:commandButton value="Reset" type="reset" />
+							<p:commandButton value="Remove" actionListener="#{createCategory.remove}" 
+								async="true" update="panel"/>
 							<p:commandButton value="Save" actionListener="#{createCategory.save}"
-								async="true" update="panel,category">
+								async="true" update="panel">
 								<p:confirmDialog yesLabel="Just save it" noLabel="Hmm, nope"
 									message="Seriously dude, are you sure?" header="Confirm :)"
 									severity="warn" fixedCenter="true" draggable="false" />
