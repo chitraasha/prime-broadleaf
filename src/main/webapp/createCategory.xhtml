@@ -45,9 +45,8 @@
 					<h:outputLabel for="category" value="Category" />
 					<p:tree value="#{categoryBean.root}" var="node" dynamic="false"
 						id="category" selectionMode="single"
-						selection="#{createCategory.selectedNode}"
-						nodeExpandListener="#{categoryBean.onNodeExpand}">
-											
+						selection="#{createCategory.selectedNode}" cache="true">
+						<p:ajax event="expand" update="messages" listener="#{categoryBean.onNodeExpand}" />											
 						<p:treeNode>
 							<h:outputText value="#{node.name}" />
 						</p:treeNode>

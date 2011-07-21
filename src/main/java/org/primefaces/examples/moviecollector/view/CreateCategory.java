@@ -66,7 +66,7 @@ public class CreateCategory implements Serializable {
 
 	public void remove(ActionEvent actionEvent) {
 		if (selectedNode != null) {
-			
+			//Remove node
 		}
 		else {
 			FacesMessage facesMessage = new FacesMessage(
