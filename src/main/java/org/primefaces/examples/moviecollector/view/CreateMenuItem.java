@@ -8,10 +8,14 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import net.sf.ehcache.distribution.ManualRMICacheManagerPeerProvider;
+
+import org.primefaces.examples.moviecollector.domain.Category;
 import org.primefaces.examples.moviecollector.domain.MenuItem;
 import org.primefaces.examples.moviecollector.domain.Movie;
 import org.primefaces.examples.moviecollector.service.MenuItemService;
 import org.primefaces.examples.moviecollector.service.MovieService;
+import org.primefaces.model.TreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -22,6 +26,8 @@ public class CreateMenuItem implements Serializable {
 
 	private MenuItem menuItem = new MenuItem();
 
+	private TreeNode selectedNode;
+	
 	private MenuItemService addService;
 
 	public CreateMenuItem() {
@@ -33,7 +39,7 @@ public class CreateMenuItem implements Serializable {
 	}
 
 	public void save(ActionEvent actionEvent) {
-		if (menuItem.getCategory().isEmpty()) {
+		if (selectedNode == null) {
 			FacesMessage facesMsg = new FacesMessage(
 					FacesMessage.SEVERITY_ERROR, "No category selected",
 					"No category selected");
@@ -43,7 +49,8 @@ public class CreateMenuItem implements Serializable {
 			context.addMessage(category.getClientId(context), facesMsg);
 
 		} else {
-
+			Category category = (Category) selectedNode.getData();
+			menuItem.setCategory(category);
 			addService.createNew(menuItem);
 			FacesMessage facesMessage = new FacesMessage(
 					FacesMessage.SEVERITY_INFO, "Info", "MenuItem is saved");
@@ -73,5 +80,13 @@ public class CreateMenuItem implements Serializable {
 
 	public MenuItem getMenuItem() {
 		return menuItem;
+	}
+
+	public void setSelectedNode(TreeNode selectedNode) {
+		this.selectedNode = selectedNode;
+	}
+
+	public TreeNode getSelectedNode() {
+		return selectedNode;
 	}
 }

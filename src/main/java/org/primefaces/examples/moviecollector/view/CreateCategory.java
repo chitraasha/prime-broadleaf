@@ -55,8 +55,6 @@ public class CreateCategory implements Serializable {
 			new DefaultTreeNode(category, bean.getRoot());	
 		}
 		
-		
-		
 		categoryService.createNew(category);
 		FacesMessage facesMessage = new FacesMessage(
 				FacesMessage.SEVERITY_INFO, "Info", "Category is saved");
@@ -66,7 +64,15 @@ public class CreateCategory implements Serializable {
 
 	public void remove(ActionEvent actionEvent) {
 		if (selectedNode != null) {
-			//Remove node
+			if (selectedNode.isLeaf()) {
+				selectedNode.getParent().getChildren().remove(selectedNode);
+				categoryService.remove((Category) selectedNode.getData());	
+			}
+			else {
+				FacesMessage facesMessage = new FacesMessage(
+						FacesMessage.SEVERITY_ERROR, "Error", "Can only remove leaf nodes!");
+				FacesContext.getCurrentInstance().addMessage(null, facesMessage);
+			}
 		}
 		else {
 			FacesMessage facesMessage = new FacesMessage(
@@ -75,22 +81,7 @@ public class CreateCategory implements Serializable {
 		}
 	}
 
-	private UIComponent findComponent(UIComponent parent, String id) {
-		if (id.equals(parent.getId())) {
-			return parent;
-		}
-		Iterator<UIComponent> kids = parent.getFacetsAndChildren();
-		while (kids.hasNext()) {
-			UIComponent kid = kids.next();
-			UIComponent found = findComponent(kid, id);
-			if (found != null) {
-				return found;
-			}
-		}
-		return null;
-	}
-
-	public void setCategory(Category category) {
+    public void setCategory(Category category) {
 		this.category = category;
 	}
 

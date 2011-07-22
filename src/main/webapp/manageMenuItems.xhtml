@@ -39,42 +39,42 @@
 	<ui:define name="content">
 	
 		<h:form prependId="false">
-			<p:panel header="Search Adds">
+			<p:panel header="Search Menu items">
 				<h:panelGrid columns="3">
-					<h:outputText value="Add " />
-					<p:autoComplete value="#{manageAdds.headLine}" completeMethod="#{manageAdds.getAddsByHeadline}"/>
-					<p:commandButton value="Search" actionListener="#{manageAdds.search}" async="true" update="adds"/>
+					<h:outputText value="Menu item " />
+					<p:autoComplete value="#{manageMenuItems.headLine}" completeMethod="#{manageMenuItems.getMenuItemsByHeadline}"/>
+					<p:commandButton value="Search" actionListener="#{manageMenuItems.search}" async="true" update="menuItems"/>
 				</h:panelGrid>
 			</p:panel>
 			
 		
-			<p:dataTable id="adds" var="add" value="#{manageAdds.adds}" rows="5" paginator="true" >
+			<p:dataTable id="menuItems" var="menuItem" value="#{manageMenuItems.menuItems}" rows="5" paginator="true" >
 				<p:column>
 					<f:facet name="header">
 						<h:outputText value="Headline" />
 					</f:facet>
-					<h:outputText value="#{add.headLine}"></h:outputText>
+					<h:outputText value="#{menuItem.headLine}"></h:outputText>
 				</p:column>
 				
 				<p:column>
 					<f:facet name="header">
 						<h:outputText value="Category" />
 					</f:facet>
-					<h:outputText value="#{add.category}"></h:outputText>
+					<h:outputText value="#{menuItem.category.name}"></h:outputText>
 				</p:column>
 				
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Name" />
+						<h:outputText value="Description" />
 					</f:facet>
-					<h:outputText value="#{add.name}"></h:outputText>
+					<h:outputText value="#{menuItem.description}"></h:outputText>
 				</p:column>
 				
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="E-mail" />
+						<h:outputText value="Price" />
 					</f:facet>
-					<h:outputText value="#{add.email}"></h:outputText>
+					<h:outputText value="#{menuItem.price}"></h:outputText>
 				</p:column>
 				
 				<p:column>
@@ -83,7 +83,7 @@
 					</f:facet>
 					<p:commandLink value="View" async="true" update="detailsTable" oncomplete="detailsDialog.show();">
 						<h:graphicImage value="img/search.png" style="border:0;"/>
-						<f:setPropertyActionListener value="#{add}" target="#{manageAdds.add}" />
+						<f:setPropertyActionListener value="#{menuItem}" target="#{manageMenuItems.menuItem}" />
 					</p:commandLink>
 				</p:column>
 				
@@ -95,28 +95,28 @@
 			
 			<h:commandLink>
 				<h:graphicImage value="img/excel.png" style="border:0"/>
-				<p:dataExporter type="xls" target="adds" fileName="adds" excludeColumns="3"/>
+				<p:dataExporter type="xls" target="menuItems" fileName="menuItems" excludeColumns="3"/>
 			</h:commandLink>
 			
 			<h:commandLink>
 				<h:graphicImage value="img/pdf.png" style="border:0"/>
-				<p:dataExporter type="pdf" target="adds" fileName="adds" excludeColumns="3"/>
+				<p:dataExporter type="pdf" target="menuItems" fileName="menuItems" excludeColumns="3"/>
 			</h:commandLink>
 		</h:form>
 		
-		<p:dialog header="Add Details" widgetVar="detailsDialog" fixedCenter="true">
+		<p:dialog header="Menu item Details" widgetVar="detailsDialog" fixedCenter="true">
 			<h:panelGrid id="detailsTable" columns="2" width="300px" >
 				<h:outputText value="Headline" />
-				<h:outputText value="#{manageAdds.add.headLine}" />
+				<h:outputText value="#{manageMenuItems.menuItem.headLine}" />
 				
 				<h:outputText value="Category" />
-				<h:outputText value="#{manageAdds.add.category}" />
+				<h:outputText value="#{manageMenuItems.menuItem.category.name}" />
 				
-				<h:outputText value="Name" />
-				<h:outputText value="#{manageAdds.add.name}" />
+				<h:outputText value="Description" />
+				<h:outputText value="#{manageMenuItems.menuItem.description}" />
 				
-				<h:outputText value="E-mail" />
-				<h:outputText value="#{manageAdds.add.email}" />
+				<h:outputText value="Price" />
+				<h:outputText value="#{manageMenuItems.menuItem.price}" />
 			</h:panelGrid>
 		</p:dialog>
 	</ui:define>

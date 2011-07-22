@@ -34,48 +34,30 @@
 				<p:growl showDetail="true" />
 				<h:panelGrid columns="3" columnClasses="label,value,validation"
 					styleClass="grid">
-					<h:outputLabel for="name" value="Name" />
-					<p:inputText id="name" value="#{createMenuItem.menuItem.name}"
-						required="true" requiredMessage="Name is required"
-						validatorMessage="Max length is 25">
-						<f:validateLength maximum="25" />
+					<h:outputLabel for="headLine" value="Headline" />
+					<p:inputText id="headLine" value="#{createMenuItem.menuItem.headLine}"
+						validatorMessage="Max length is 50" required="true"
+						requiredMessage="Headline is required">
+						<f:validateLength maximum="50" />
 					</p:inputText>
-					<p:message for="name" />
-
-					<h:outputLabel for="email" value="E-mail" />
-					<p:inputText id="email" value="#{createMenuItem.menuItem.email}"
-						required="true" requiredMessage="E-mail is required"
-						converterMessage="Only numbers dude"
-						validatorMessage="Input must be a a valid email address">
-						<f:validateRegex
-							pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$" />
-					</p:inputText>
-					<p:message for="email" />
+					<p:message for="headLine" />
 
 					<h:outputLabel for="category" value="Category" />
-					<p:tree value="#{treeBean.root}" var="node" dynamic="true"
+					<p:tree value="#{categoryBean.root}" var="node" dynamic="true"
 						id="category" selectionMode="single"
-						selection="#{createMenuItem.menuItem.category}">
+						selection="#{createMenuItem.selectedNode}">
 						<p:treeNode>
-							<h:outputText value="#{node}" />
+							<h:outputText value="#{node.name}" />
 						</p:treeNode>
 					</p:tree>
 					<p:message for="category" />
 
-					<h:outputLabel for="headLine" value="Headline" />
-					<p:inputText id="headLine" value="#{createMenuItem.menuItem.headLine}"
-						validatorMessage="Max length is 25" required="true"
-						requiredMessage="Headline is required">
-						<f:validateLength maximum="25" />
-					</p:inputText>
-					<p:message for="headLine" />
-
 					<h:outputLabel for="description" value="Description" />
 					<p:inputTextarea id="description"
 						value="#{createMenuItem.menuItem.description}" cols="50" rows="5"
-						validatorMessage="Max length is 25" required="true"
+						validatorMessage="Max length is 250" required="false"
 						requiredMessage="Description is required">
-						<f:validateLength maximum="25" />
+						<f:validateLength maximum="250" />
 					</p:inputTextarea>
 					<p:message for="description" />
 
@@ -99,9 +81,6 @@
 							<p:commandButton value="Reset" type="reset" />
 							<p:commandButton value="Save" actionListener="#{createMenuItem.save}"
 								async="true" update="panel">
-								<p:confirmDialog yesLabel="Just save it" noLabel="Hmm, nope"
-									message="Seriously dude, are you sure?" header="Confirm :)"
-									severity="warn" fixedCenter="true" draggable="false" />
 							</p:commandButton>
 						</h:panelGrid>
 					</h:panelGroup>
