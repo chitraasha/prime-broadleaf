@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+import org.hibernate.validator.Max;
 
 @Entity
 public class MenuItem implements Serializable {
@@ -15,15 +19,12 @@ public class MenuItem implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	private String name;
-	
-	private String email;
-
-	private String category;
-	
 	private String headLine;
 	
 	private String description;
+
+	@ManyToOne
+	private Category category;
 	
 	private int	price;
 	
@@ -41,30 +42,6 @@ public class MenuItem implements Serializable {
 
 	public String getDescription() {
 		return description;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
 	}
 
 	public String getHeadLine() {
@@ -85,5 +62,13 @@ public class MenuItem implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Category getCategory() {
+		return category;
 	}
 }

@@ -3,7 +3,6 @@ package org.primefaces.examples.moviecollector.beans;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 
@@ -35,17 +34,18 @@ public class CategoryBean implements Serializable {
 		for (Category category : categories) {
 			TreeNode newNode = new DefaultTreeNode(category, root);
 			List<Category> children = categoryService.findChildren(category);
-			
+
 			for (Category child : children) {
-				new DefaultTreeNode(child,newNode);
+				new DefaultTreeNode(child, newNode);
 			}
+
 		}
 		root.setExpanded(false);
-		
+
 	}
 
 	public CategoryBean() {
-		
+
 	}
 
 	public TreeNode getSelectedNode() {
@@ -60,24 +60,26 @@ public class CategoryBean implements Serializable {
 		return root;
 	}
 
-	
 	public void onNodeExpand(NodeExpandEvent event) {
-		
+
 		List<TreeNode> nodes = event.getTreeNode().getChildren();
-		
+
 		for (TreeNode treeNode : nodes) {
-			Category category = (Category) treeNode.getData();
-			List<Category> children = categoryService.findChildren(category);
-			
-			for (Category child : children) {
-				new DefaultTreeNode(child,treeNode);
+			if (treeNode.getChildCount() == 0) {
+				Category category = (Category) treeNode.getData();
+				List<Category> children = categoryService
+						.findChildren(category);
+
+				for (Category child : children) {
+					new DefaultTreeNode(child, treeNode);
+				}
+
 			}
 		}
 	}
-	
+
 	public void deleteNode(ActionEvent actionEvent) {
 		System.out.println("Node to be deleted: "
 				+ getSelectedNode().toString());
-		// getSelectedNode().
 	}
 }

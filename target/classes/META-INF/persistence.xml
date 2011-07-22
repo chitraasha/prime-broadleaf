@@ -4,8 +4,6 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
 	version="1.0">
 
-	<persistence-unit name="prime-sweet" transaction-type="RESOURCE_LOCAL">
-		  <class>org.primefaces.examples.moviecollector.domain.Movie</class>
-	</persistence-unit>
+	<persistence-unit name="prime-sweet" transaction-type="RESOURCE_LOCAL" />
 
 </persistence>
