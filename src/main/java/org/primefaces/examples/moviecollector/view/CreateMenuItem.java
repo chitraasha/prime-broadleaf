@@ -8,13 +8,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-import net.sf.ehcache.distribution.ManualRMICacheManagerPeerProvider;
-
 import org.primefaces.examples.moviecollector.domain.Category;
 import org.primefaces.examples.moviecollector.domain.MenuItem;
-import org.primefaces.examples.moviecollector.domain.Movie;
 import org.primefaces.examples.moviecollector.service.MenuItemService;
-import org.primefaces.examples.moviecollector.service.MovieService;
 import org.primefaces.model.TreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
