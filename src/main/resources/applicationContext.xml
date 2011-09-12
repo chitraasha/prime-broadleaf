@@ -53,6 +53,12 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 	
+	<bean id="primeUserDetailsManager" class="org.primefaces.examples.moviecollector.custom.PrimeUserDetailsManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	
+	
 	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 	<bean id="loggerListener" class="org.springframework.security.authentication.event.LoggerListener" />

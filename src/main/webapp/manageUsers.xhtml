@@ -39,36 +39,24 @@
 	<ui:define name="content">
 	
 		<h:form prependId="false">
-			<p:panel header="Search Movies">
+			<p:panel header="Search Users">
 				<h:panelGrid columns="3">
-					<h:outputText value="Title: " />
-					<p:autoComplete value="#{manageMovies.title}" completeMethod="#{manageMovies.getMoviesByTitle}"/>
-					<p:commandButton value="Search" actionListener="#{manageMovies.search}" async="true" update="movies"/>
+					<h:outputText value="Username: " />
+					<p:autoComplete value="#{manageUsers.userName}" completeMethod="#{manageUsers.getUsersByUsername}"/>
+					<p:commandButton value="Search" actionListener="#{manageUsers.search}" async="true" update="users"/>
 				</h:panelGrid>
 			</p:panel>
 			
 		
-			<p:dataTable id="movies" var="movie" value="#{manageMovies.movies}" rows="5" paginator="true">
+			<p:dataTable id="users" var="user" value="#{manageUsers.users}" rows="5" paginator="true">
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Title" />
+						<h:outputText value="Username" />
 					</f:facet>
-					<h:outputText value="#{movie.title}"></h:outputText>
+					<h:outputText value="#{user.username}"></h:outputText>
 				</p:column>
 				
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Format" />
-					</f:facet>
-					<h:outputText value="#{movie.format}"></h:outputText>
-				</p:column>
 				
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Discs" />
-					</f:facet>
-					<h:outputText value="#{movie.discs}"></h:outputText>
-				</p:column>
 				
 				<p:column>
 					<f:facet name="header">
@@ -76,7 +64,7 @@
 					</f:facet>
 					<p:commandLink value="View" async="true" update="detailsTable" oncomplete="detailsDialog.show();">
 						<h:graphicImage value="img/search.png" style="border:0;"/>
-						<f:setPropertyActionListener value="#{movie}" target="#{manageMovies.movie}" />
+						<f:setPropertyActionListener value="#{user}" target="#{manageUsers.user}" />
 					</p:commandLink>
 				</p:column>
 				
@@ -88,28 +76,22 @@
 			
 			<h:commandLink>
 				<h:graphicImage value="img/excel.png" style="border:0"/>
-				<p:dataExporter type="xls" target="movies" fileName="movies" excludeColumns="3"/>
+				<p:dataExporter type="xls" target="users" fileName="users" excludeColumns="3"/>
 			</h:commandLink>
 			
 			<h:commandLink>
 				<h:graphicImage value="img/pdf.png" style="border:0"/>
-				<p:dataExporter type="pdf" target="movies" fileName="movies" excludeColumns="3"/>
+				<p:dataExporter type="pdf" target="users" fileName="users" excludeColumns="3"/>
 			</h:commandLink>
 		</h:form>
 		
-		<p:dialog header="Movie Details" widgetVar="detailsDialog" fixedCenter="true">
+		<p:dialog header="User Details" widgetVar="detailsDialog" fixedCenter="true">
 			<h:panelGrid id="detailsTable" columns="2" width="300px" >
-				<h:outputText value="Title" />
-				<h:outputText value="#{manageMovies.movie.title}" />
+				<h:outputText value="Username" />
+				<h:outputText value="#{manageUsers.user.username}" />
 				
-				<h:outputText value="Format" />
-				<h:outputText value="#{manageMovies.movie.format}" />
-				
-				<h:outputText value="Discs" />
-				<h:outputText value="#{manageMovies.movie.discs}" />
-				
-				<h:outputText value="Description" />
-				<h:outputText value="#{manageMovies.movie.description}" />
+				<h:outputText value="Group" />
+				<h:outputText value="#{manageUsers.user.group}" />
 			</h:panelGrid>
 		</p:dialog>
 	</ui:define>

@@ -19,31 +19,31 @@
 .grid {
 	width: 100%;
 }
+
 </style>
 	</ui:define>
 
 	<ui:define name="content">
-
 		<h:form prependId="false">
 			<p:panel id="panel" header="New User">
 				<p:growl showDetail="true" />
 				<h:panelGrid columns="2" columnClasses="label,value"
 					styleClass="grid">
 					<h:outputLabel for="userName" value="Username" />
-					<p:inputText id="firstName" value="#{createUser.userName}"
-						required="true" requiredMessage="First name is required">
-					</p:inputText>
+					<p:inputText id="userName" value="#{createUser.userName}"
+						required="true" requiredMessage="First name is required"/>
 
 					<h:outputLabel for="password" value="Password" />
-					<p:inputText id="password" value="#{createUser.password}"
-						required="true" requiredMessage="First name is required">
-					</p:inputText>
+					<p:password id="password" value="#{createUser.password}"
+						required="true" requiredMessage="First name is required" feedback="false"/>
+					
 
 					<h:outputLabel for="group" value="Group" />
-					<h:selectOneMenu id="group"  value="#{createUser.groupName}" >
+					<p:selectOneMenu id="group"  value="#{createUser.groupName}" required="true" 
+					requiredMessage="You must select a group!">
 						<f:selectItem itemLabel="Select user group:"/>
-						<f:selectItems value="#{userBean.groups}" />
-					</h:selectOneMenu>
+						<f:selectItems value="#{manageUsers.groups}" var="user" itemLabel="#{user}" itemValue="#{user}"/>
+					</p:selectOneMenu>
 
 					<h:outputText />
 					<h:panelGroup>
